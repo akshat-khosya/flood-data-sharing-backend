@@ -7,6 +7,13 @@ class Config {
     this._config = {
       port: process.env.PORT || 8080,
       dbUrl: process.env.DB_URL || "",
+      googleId: process.env.ID || "",
+      googleSecret: process.env.SECRET || "",
+      refreshToken: process.env.REFRESH_TOKEN || "",
+      email: process.env.EMAIL || "",
+      saltWorkFactor: 10,
+      privateKey: process.env.PRIVATE_KEY || "",
+      accessTokenTtl: "1d",
     };
   }
 

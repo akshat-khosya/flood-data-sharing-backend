@@ -12,8 +12,8 @@ export interface IUser {
   email: string;
   password: string;
   role: USER_ROLES;
-  createdAt: Date;
-  updatedAt: Date;
+  createdAt?: Date;
+  updatedAt?: Date;
 }
 
 const userSchema = new mongoose.Schema<IUser>(
