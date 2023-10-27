@@ -4,7 +4,7 @@ import log from "../../utils/logger/log";
 const createUser = async (userData: IUser) => {
   try {
     await User.create(userData);
-  } catch (error: any) {
+  } catch (error) {
     throw new Error(error);
   }
 };

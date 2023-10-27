@@ -67,8 +67,6 @@ const loginAccount = async (req: Request, res: Response) => {
         .json({ status: false, msg: "Password did not match" });
     }
     // genrate token
-    console.log(checkEmail.id);
-    console.log(checkEmail._id);
     const token = sign(
       { userId: checkEmail.id },
       { expiresIn: config.get("accessTokenTtl") as string }
@@ -79,6 +77,7 @@ const loginAccount = async (req: Request, res: Response) => {
       msg: " Login Sucessfully",
       token: token,
       userData: {
+        id: checkEmail.id,
         name: checkEmail.name,
         email: checkEmail.email,
         phone: checkEmail.phone,
