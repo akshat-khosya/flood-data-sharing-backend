@@ -1,4 +1,10 @@
-import { registerAccount, loginAccount } from "./account";
+import { registerAccount, loginAccount, getUserProfile } from "./account";
 import { uploadMediaPng, createMediaHandler } from "./media";
 
-export { registerAccount, loginAccount, uploadMediaPng, createMediaHandler };
+export {
+  registerAccount,
+  loginAccount,
+  uploadMediaPng,
+  createMediaHandler,
+  getUserProfile,
+};

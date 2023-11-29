@@ -1,4 +1,5 @@
 import express from "express";
+import cors from "cors";
 import log from "./utils/logger/log";
 import config from "./lib/config/default";
 import createServer from "./utils/server";
@@ -16,7 +17,7 @@ const destination = config.get("dataPath") as string;
 
 connect();
 
-app.use("/data", express.static(destination));
+app.use("/data", cors(), express.static(destination));
 
 app.use("/api/v1", api);
 

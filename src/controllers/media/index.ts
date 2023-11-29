@@ -1,3 +1,4 @@
-import { uploadMediaPng, createMediaHandler } from "./postMedia";
+import { getUserAllMediaHandler } from "./getMedia.controller";
+import { uploadMediaPng, createMediaHandler } from "./postMedia.controller";
 
-export { uploadMediaPng, createMediaHandler };
+export { uploadMediaPng, createMediaHandler, getUserAllMediaHandler };

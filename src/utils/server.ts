@@ -5,13 +5,13 @@ import helmet from "helmet";
 function createServer() {
   const app = express();
 
-  const options: cors.CorsOptions = {
-    origin: "*",
+  const corsOptions = {
+    origin: "http://localhost:3000", // Replace with the origin of your front-end application
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+    credentials: true, // Enable cookies and HTTP authentication
   };
 
-  app.use(cors(options));
-
-  app.use(helmet());
+  app.use(cors(corsOptions));
 
   app.use(express.json());
 

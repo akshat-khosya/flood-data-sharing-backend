@@ -1,3 +1,4 @@
+import mongoose from "mongoose";
 import { User } from "../../model";
 import log from "../../utils/logger/log";
 
@@ -21,4 +22,14 @@ const findUserByPhone = async (phone: string) => {
   }
 };
 
-export { findUserByEmail, findUserByPhone };
+const findUserById = async (id: mongoose.Types.ObjectId) => {
+  try {
+    const user = await User.findById(id).select("-password");
+    return user;
+  } catch (error) {
+    log.error(JSON.stringify({ path: "Find User By Id", error: error }));
+    return null;
+  }
+};
+
+export { findUserByEmail, findUserByPhone, findUserById };
