@@ -50,7 +50,7 @@ const deleteMediaHandler = async (req: Request, res: Response) => {
     // delete media id
     await deleteSingleMedia(`${id}.PNG`);
     // delete image from Data folder
-    fs.unlinkSync(`${destination}/${id}.png`);
+    fs.unlinkSync(`${destination}/${id}.PNG`);
     return res.status(200).json({ msg: "deleted" });
   } catch (error) {
     log.error(JSON.stringify({ path: "Delete Media", error: error.message }));

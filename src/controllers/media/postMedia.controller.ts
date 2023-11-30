@@ -39,8 +39,8 @@ const createMediaHandler = async (req: Request, res: Response) => {
       userId: req.userId,
       imageName: req.body.imageName,
       mediaType: req.body.mediaType,
-      latitude: req.body.latitude,
-      longitude: req.body.longitude,
+      latitude: req.body.latitude + getRandomNumber(),
+      longitude: req.body.longitude + getRandomNumber(),
     });
     return res.status(200).json({
       status: true,
@@ -52,5 +52,11 @@ const createMediaHandler = async (req: Request, res: Response) => {
     return res.status(500).json({ status: false, msg: error.message });
   }
 };
+function getRandomNumber(): number {
+  const randomValue = Math.random();
+  const scaledRandomNumber = randomValue * 0.2 - 0.1;
 
+
+  return scaledRandomNumber;
+}
 export { uploadMediaPng, createMediaHandler };
