@@ -3,7 +3,7 @@ import { Media } from "../../model/media.model";
 
 const getUserAllMedia = async (userId: mongoose.Types.ObjectId) => {
   try {
-    const res = await Media.find({ userId: userId });
+    const res = await Media.find({ userId: userId }).sort({ createdAt: -1 });
     return res;
   } catch (error) {
     throw new Error(error);

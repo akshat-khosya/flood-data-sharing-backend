@@ -14,7 +14,8 @@ class Config {
       saltWorkFactor: 10,
       privateKey: process.env.PRIVATE_KEY || "",
       accessTokenTtl: "1d",
-      dataPath: "/home/akshat/Documents/Data",
+      // dataPath: "/home/akshat/Documents/Data",
+      dataPath: "/Users/saurabh/Desktop/Data",
     };
   }
 

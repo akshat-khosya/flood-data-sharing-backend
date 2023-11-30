@@ -1,7 +1,10 @@
 import { Request, Response } from "express";
 import log from "../../utils/logger/log";
 import { getAllMedia, getUserAllMedia } from "../../services";
-
+import { deleteSingleMedia } from "../../services/media/deleteMedia.service";
+import config from "../../lib/config/default";
+import fs from "fs";
+const destination = config.get("dataPath") as string;
 // get a user all Media Data
 // get all users Media Data
 // get a media
@@ -40,4 +43,18 @@ const getAllMediaHandler = async (req: Request, res: Response) => {
     return res.status(500).json({ status: false, msg: error.message });
   }
 };
-export { getUserAllMediaHandler, getAllMediaHandler };
+
+const deleteMediaHandler = async (req: Request, res: Response) => {
+  try {
+    const id = req.params.id;
+    // delete media id
+    await deleteSingleMedia(`${id}.PNG`);
+    // delete image from Data folder
+    fs.unlinkSync(`${destination}/${id}.png`);
+    return res.status(200).json({ msg: "deleted" });
+  } catch (error) {
+    log.error(JSON.stringify({ path: "Delete Media", error: error.message }));
+    return res.status(500).json({ status: false, msg: error.message });
+  }
+};
+export { getUserAllMediaHandler, getAllMediaHandler, deleteMediaHandler };

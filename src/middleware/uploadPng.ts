@@ -7,7 +7,7 @@ const destination = config.get("dataPath") as string;
 const storage = multer.diskStorage({
   destination: destination,
   filename: function (req, file, cb) {
-    const uniqueFilename = uuidv4() + path.extname(file.originalname);
+    const uniqueFilename = uuidv4() + ".PNG"; // path.extname(file.originalname)
     req.imageName = uniqueFilename; // Pass the image name to the request object
     cb(null, uniqueFilename);
   },

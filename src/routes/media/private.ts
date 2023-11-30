@@ -2,7 +2,10 @@ import express from "express";
 import { upload } from "../../middleware";
 import { createMediaHandler, uploadMediaPng } from "../../controllers";
 import { getUserAllMediaHandler } from "../../controllers/media";
-import { getAllMediaHandler } from "../../controllers/media/getMedia.controller";
+import {
+  deleteMediaHandler,
+  getAllMediaHandler,
+} from "../../controllers/media/getMedia.controller";
 
 const mediaPrivateRoute = express.Router();
 
@@ -17,5 +20,8 @@ mediaPrivateRoute.get("/user", getUserAllMediaHandler);
 
 // get all media
 mediaPrivateRoute.get("/", getAllMediaHandler);
+
+// delete a post
+mediaPrivateRoute.get("/delete/:id", deleteMediaHandler);
 
 export default mediaPrivateRoute;
